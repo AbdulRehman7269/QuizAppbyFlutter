@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  void questionAnswers() {
+    print("Black Colour");
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Quiz App'),
-        ),
-        body: Column(
-          children: [
-            Text("What is the colour of Pakistan Flag?"),
-            ElevatedButton(
-              onPressed: () => print("AnswerChoseBlack"),
-              child: Text('Black'),
-            ),
-            ElevatedButton(
-              onPressed: () => print("AnswerChoseGreen"),
-              child: Text('Green'),
-            ),
-            ElevatedButton(
-              onPressed: () => print("AnswerChoseBlue"),
-              child: Text('Blue'),
-            ),
-          ],
-        ),
+    var questions = [
+      'Colours',
+      'Name',
+    ];
+    return MaterialApp(home: Scaffold(
+      appBar: AppBar(
+        title: Text("Quiz App"),
       ),
+      body: Column(
+          children: [
+          Text(questions[1]),
+      ElevatedButton(onPressed: questionAnswers, child: Text("Black Colour"),
+      ),
+            ElevatedButton(onPressed: () => print("Green Colour"), child: Text("Green Colour"),
+            ),
+            ElevatedButton(onPressed:() {
+              print("Blue Colour");
+            }, child: Text("Blue Colour"),
+            ),
+      ],
+    ),)
+    ,
     );
   }
 }

@@ -1,16 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   void printAnswer() {
-    debugPrint('Black Colour Pressed');
+    if (kDebugMode) {
+      print('Black Colour Pressed');
+    }
   }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

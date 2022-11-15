@@ -5,35 +5,45 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  void questionAnswers() {
-    print("Black Colour");
-  }
+  const MyApp({super.key});
 
+  void printAnswer() {
+    debugPrint('Black Colour Pressed');
+  }
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     var questions = [
-      'Colours',
-      'Name',
+      'What is the colour of Pakistan Flag?',
+      'Who is the Founder of Pakistan',
+      'What is your Name'
     ];
-    return MaterialApp(home: Scaffold(
-      appBar: AppBar(
-        title: Text("Quiz App"),
-      ),
-      body: Column(
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('My Quiz App'),
+        ),
+        body: Column(
           children: [
-          Text(questions[1]),
-      ElevatedButton(onPressed: questionAnswers, child: Text("Black Colour"),
+            Text(questions[0]),
+            ElevatedButton(
+              onPressed: printAnswer,
+              child: const Text('Black Colour'),
+            ),
+            ElevatedButton(
+              onPressed: () => debugPrint('Green Colour Pressed'),
+              child: const Text('Green Colour'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                debugPrint('Blue Colour Pressed');
+              },
+              child: const Text('Blue Colour'),
+            ),
+          ],
+        ),
       ),
-            ElevatedButton(onPressed: () => print("Green Colour"), child: Text("Green Colour"),
-            ),
-            ElevatedButton(onPressed:() {
-              print("Blue Colour");
-            }, child: Text("Blue Colour"),
-            ),
-      ],
-    ),)
-    ,
     );
   }
 }

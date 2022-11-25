@@ -1,47 +1,63 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  void printAnswer() {
-    if (kDebugMode) {
-      print('Black Colour Pressed');
-    }
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
   }
+}
+
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+  void questionPrint() {
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
+
+    print(questionIndex);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    var questions = [
-      'What is the colour of Pakistan Flag?',
-      'Who is the Founder of Pakistan',
-      'What is your Name'
+    var questionLists = [
+      '1',
+      '2',
+      '3',
+      '4',
     ];
+    // TODO: implement build
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My Quiz App'),
+          title: Text('My Quizz App'),
         ),
         body: Column(
           children: [
-            Text(questions[0]),
-            ElevatedButton(
-              onPressed: printAnswer,
-              child: const Text('Black Colour'),
+            Text(
+              questionLists[questionIndex],
             ),
             ElevatedButton(
-              onPressed: () => debugPrint('Green Colour Pressed'),
-              child: const Text('Green Colour'),
+              onPressed: questionPrint,
+              child: Text('Answer1'),
+            ),
+            ElevatedButton(
+              onPressed: () => print('2'),
+              child: Text('Answer2'),
             ),
             ElevatedButton(
               onPressed: () {
-                debugPrint('Blue Colour Pressed');
+                print('3');
               },
-              child:  const Text('Blue Colour'),
+              child: Text('Answer3'),
+            ),
+            ElevatedButton(
+              onPressed: () => print('4'),
+              child: Text('Answer4'),
             ),
           ],
         ),
@@ -49,4 +65,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// test

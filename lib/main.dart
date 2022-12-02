@@ -1,6 +1,6 @@
-import 'package:app/answer.dart';
 import 'package:flutter/material.dart';
-import './question.dart';
+import './result.dart';
+import './quiz.dart';
 void main(){
   runApp(MyApp());
 }
@@ -8,20 +8,20 @@ class MyApp extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyAppState();
+    return _MyAppState();
   }
 }
-class MyAppState extends State<MyApp>{
-  var questionIndex = 0;
-  void printAnswer(){
+class _MyAppState extends State<MyApp>{
+  var _questionIndex = 0;
+  void _printAnswer(){
     setState(() {
-      questionIndex = questionIndex +1;
+      _questionIndex = _questionIndex +1;
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
   @override
   Widget build(BuildContext context) {
-    const questionList = [
+    const _questionList = [
       {
         'questionText': 'Question NO 1',
         'answers': ['1', '2', '3', '4'],
@@ -63,22 +63,23 @@ class MyAppState extends State<MyApp>{
         'answers': ['37', '38', '39', '40'],
       },
     ];
+    if(_questionIndex < _questionList.length){
+      print('NO more Questions');
+    }else{
+      print('More question');
+    }
     // TODO: implement build
     return MaterialApp(home: Scaffold(
       appBar: AppBar(
         title: Text('MyQuixApp'),
       ),
-      body: Column(
-        children: [
-          Question(
-            questionList[questionIndex]['questionText'] as String
-          ),
-          ...(questionList[questionIndex]['answers'] as List<String>)
-              .map((answer) {
-            return Answer(printAnswer, answer);
-          }).toList()
-        ],
-      ),
+      body: _questionIndex < _questionList.length ?
+    Quiz(
+      questionIndex: _questionIndex,
+      questionList: _questionList,
+      printAnswer: _printAnswer,
+    )
+    : Result(),
     ),
     );
   }

@@ -6,7 +6,10 @@ class Answer extends StatelessWidget {
  Answer(this.selectHandler, this.answerText);
   @override
   Widget build(BuildContext context) {
-    return Container( child:
+    return Container( 
+      width: 150,
+      margin: EdgeInsets.all(3),
+      child:
       ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(Colors.pink),
